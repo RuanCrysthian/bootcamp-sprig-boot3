@@ -15,7 +15,7 @@ import com.bootcamp.dscatalog.dto.ProductDTO;
 import com.bootcamp.dscatalog.entities.Category;
 import com.bootcamp.dscatalog.entities.Product;
 import com.bootcamp.dscatalog.repositories.CategoryRepository;
-import com.bootcamp.dscatalog.repositories.ProductRespository;
+import com.bootcamp.dscatalog.repositories.ProductRepository;
 import com.bootcamp.dscatalog.services.exceptions.DatabaseException;
 import com.bootcamp.dscatalog.services.exceptions.ResourceNotFoundException;
 
@@ -25,7 +25,7 @@ import jakarta.persistence.EntityNotFoundException;
 public class ProductService {
 
   @Autowired
-  private ProductRespository repository;
+  private ProductRepository repository;
 
   @Autowired
   private CategoryRepository categoryRepository;
