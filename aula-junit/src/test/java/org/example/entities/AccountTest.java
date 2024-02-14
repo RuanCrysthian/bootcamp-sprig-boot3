@@ -36,8 +36,8 @@ class AccountTest {
 
     double result = account.fullWithdraw();
 
-    Assertions.assertTrue(expectedValue == account.getBalance());
-    Assertions.assertTrue(result == initialBalance);
+    Assertions.assertEquals(expectedValue, account.getBalance());
+    Assertions.assertEquals(result, initialBalance);
   }
 
   @Test

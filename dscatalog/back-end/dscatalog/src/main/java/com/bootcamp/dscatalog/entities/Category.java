@@ -10,8 +10,8 @@ import java.io.Serializable;
 @Getter
 @Setter
 @EqualsAndHashCode
-@Entity
-@Table(name = "tb_category")
+@Entity // Para definir que a classe é uma entidade (tabela) no banco de dados
+@Table(name = "tb_category") // Para definir o nome da tabela no banco de dados
 public class Category implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

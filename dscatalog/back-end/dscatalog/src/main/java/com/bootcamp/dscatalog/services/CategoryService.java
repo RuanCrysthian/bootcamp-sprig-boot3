@@ -18,13 +18,16 @@ import com.bootcamp.dscatalog.services.exceptions.ResourceNotFoundException;
 
 import jakarta.persistence.EntityNotFoundException;
 
-@Service
+/* Para chamar funcionalidades presentes na camada Repositories */
+
+@Service // registra a classe como um componente que participa do sistema de injeção de
+         // dependencia do Spring
 public class CategoryService {
 
   @Autowired
   private CategoryRepository repository;
 
-  @Transactional(readOnly = true)
+  @Transactional(readOnly = true) // Para garantir as propriedades ACID
   public Page<CategoryDTO> findAllPaged(Pageable pageable) {
     Page<Category> list = repository.findAll(pageable);
     return list.map(CategoryDTO::new);
@@ -60,7 +63,7 @@ public class CategoryService {
   public void delete(Long id) {
     try {
       repository.deleteById(id);
-    } catch (EmptyResultDataAccessException e) {
+    } catch (EntityNotFoundException e) {
       throw new ResourceNotFoundException("Id not found " + id);
     } catch (DataIntegrityViolationException e) {
       throw new DatabaseException("Integrity violation");
