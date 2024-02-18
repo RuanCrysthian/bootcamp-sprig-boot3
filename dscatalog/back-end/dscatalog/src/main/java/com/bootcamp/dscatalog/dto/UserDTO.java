@@ -1,6 +1,8 @@
 package com.bootcamp.dscatalog.dto;
 
 import com.bootcamp.dscatalog.entities.User;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,9 +19,15 @@ import java.util.Set;
 public class UserDTO implements Serializable {
 
   private Long id;
+
+  @NotBlank(message = "Campo Obrigatório")
   private String firstName;
+
   private String lastName;
+
+  @Email(message = "Email é obrigatório")
   private String email;
+
   Set<RoleDTO> roles = new HashSet<>();
 
   public UserDTO(User entity) {
